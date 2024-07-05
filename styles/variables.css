@@ -1,1 +1,14 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+  --main-font: 'Inter-Variable';
+  --accent-font: 'PressStart2P';
+  --card-text-w: 400;
+  --card-title-w: 700;
+  --background-color: #ffffff;
+  --accent-color: #000000;
+  --background-image: url(../svg/pattern-light.svg);
+  --max-width: 700px;
+  --contour-color: #000000;
+  --filling-color: #ff0000;
+  --button-text-color: #ffffff;
+}
