@@ -20,10 +20,11 @@
   font-family: var(--main-font, 'Inter-Variable', sans-serif);
   font-variation-settings: 'wght' var(--card-text-w, 400);
   color: var(--accent-color, #000000);
-  background-color: var(--background-color, #ffffff);
-  background-image: var(--background-image);
-  background-size: 4px;
-  background-repeat: repeat;
+  background-image: var(--background-image, 
+  repeating-linear-gradient(to bottom, #d3d3d3 0 2px, rgb(211 211 211 / 0) 2px 4px),
+  repeating-linear-gradient(to right, #d3d3d3 0 2px, rgb(211 211 211 / 0) 2px 4px),
+  linear-gradient(to bottom, #e7e7e7, #e7e7e7 0.01%, #1a1a1a 100%));
+  background-size: cover;
   background-attachment: fixed;
 }
 
@@ -133,6 +134,27 @@
   border-block-end: none;
 }
 
+.card__image-watermark {
+  font-family: var(--accent-font, 'PressStart2P'), 'Papyrus', fantasy;
+  font-size: 14px;
+  position: absolute;
+  inset-block-start: 27px;
+  inset-inline-end: 27px;
+  mix-blend-mode: hard-light;
+  text-shadow:
+  -1px 0 var(--stroke-color, rgb(255 255 255 / 0.5)), 
+  0 1px var(--stroke-color, rgb(255 255 255 / 0.5)), 
+  1px 0 var(--stroke-color, rgb(255 255 255 / 0.5)), 
+  0 -1px var(--stroke-color, rgb(255 255 255 / 0.5));
+}
+
+@supports((text-stroke: 1px #000) or (-webkit-text-stroke: 1px #000)) {
+  .card__image-watermark {
+    -webkit-text-stroke: 1px var(--stroke-color, rgb(255 255 255 / 0.5));
+    text-shadow: none;
+  }
+}
+
 .card__container {
   position: relative;
   inset: 0;
@@ -146,6 +168,34 @@
   aspect-ratio: 1/1;
   outline: 2px solid var(--accent-color, #000000);
   outline-offset: -2px;
+}
+
+.s-chistogo-lista {
+  filter: blur(2px);
+}
+
+.ono-tebe-nado {
+  filter: sepia(40%);
+}
+
+.nado-sdelat-idealno {
+  filter: saturate(300%);
+}
+
+.posmotri-v-okno {
+  filter: brightness(70%);
+}
+
+.karty-podskazhut {
+  filter: opacity(60%);
+}
+
+.slozhno-sosredotochitsya {
+  filter:hue-rotate(107deg);
+}
+
+.zakrivayuschiy-teg {
+  filter: invert(0.8);
 }
 
 .card__content {
@@ -257,10 +307,70 @@
   z-index: 1;
 }
 
+#modal {
+  color: var(--accent-color, #000000);
+  background-color: var(--background-color, #ffffff);
+  border: 2px solid var(--accent-color, #000000);
+  padding: 30px;
+}
+
+#modal[open] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+#modal::backdrop {
+  background-color: rgb(0 0 0 / 0.75);
+} 
+
+.modal-form {
+  inline-size: 293px;
+}
+
+.modal-button {
+  block-size: 38px;
+  inline-size: 100%;
+}
+.modal-button:focus {
+  box-shadow: none;
+}
+
+.modal-button:focus-visible {
+  box-shadow: 2px 2px 0 var(--accent-color, #000);
+}
+
+.modal-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  inline-size: 100%;
+  gap: 20px;
+ }
+
+.modal-icon {
+  block-size: 39px;
+  inline-size: 39px;
+  mix-blend-mode: normal;
+ }
+
+.modal-text {
+  font-family: var(--accent-font, 'PressStart2P'), fantasy;
+  font-size: 14px;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
 @media (width <= 375px) {
   .floppy-icon {
     block-size: 28px;
     inline-size: 28px;
+  }
+
+  .card__image-watermark {
+    inset-block-start: 25px;
+    inset-inline-end: 13px;
   }
 
   .save-button {
@@ -269,4 +379,9 @@
     block-size: 84px;
     gap: 8px;
   }
+
+  .modal-icon {
+    block-size: 39px;
+    inline-size: 39px;
+   }
 }
