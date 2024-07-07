@@ -148,9 +148,10 @@
   0 -1px var(--stroke-color, rgb(255 255 255 / 0.5));
 }
 
-@supports((text-stroke: 1px #000) or (-webkit-text-stroke: 1px #000)) {
+@supports((text-stroke: 1px #000000) or (-webkit-text-stroke: 1px #000000)) {
   .card__image-watermark {
     -webkit-text-stroke: 1px var(--stroke-color, rgb(255 255 255 / 0.5));
+    text-stroke: 1px var(--stroke-color, rgb(255 255 255 / 0.5));
     text-shadow: none;
   }
 }
@@ -218,7 +219,6 @@
 .card__button {
   display: flex;
   justify-content: end;
-  gap: 6px;
   margin-block-start: -2px;
 }
 
@@ -238,7 +238,7 @@
 }
 
 .card__icon-button:focus-visible {
-  border-color:  var(--accent-color, #000);
+  border-color:  var(--accent-color, #000000);
 }
 
 .button {
@@ -307,6 +307,15 @@
   z-index: 1;
 }
 
+.button__text-ok {
+  font-size: 14px;
+  line-height: 0.9;
+  position: relative;
+  mix-blend-mode: difference;
+  z-index: 1;
+  text-transform: uppercase;
+}
+
 #modal {
   color: var(--accent-color, #000000);
   background-color: var(--background-color, #ffffff);
@@ -319,6 +328,7 @@
   flex-direction: column;
   align-items: center;
   gap: 30px;
+  overflow: hidden;
 }
 
 #modal::backdrop {
@@ -338,7 +348,7 @@
 }
 
 .modal-button:focus-visible {
-  box-shadow: 2px 2px 0 var(--accent-color, #000);
+  box-shadow: 2px 2px 0 var(--accent-color, #000000);
 }
 
 .modal-container {
